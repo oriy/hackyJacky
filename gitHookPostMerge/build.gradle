@@ -1,0 +1,5 @@
+task installGitHooks(type: Copy) {
+    from "$rootDir/hooks/"
+    into "../.git/hooks/"
+    fileMode 0775
+}
