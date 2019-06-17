@@ -1,0 +1,5 @@
+suggest_gradle_build() {
+    suggest_command 'gradle.build' $PWD './gradlew build -x check'
+}
+
+check_run "\.gradle" suggest_gradle_build

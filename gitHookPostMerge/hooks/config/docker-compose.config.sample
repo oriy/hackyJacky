@@ -1,0 +1,5 @@
+suggest_docker_compose_pull() {
+    suggest_command 'docker.compose.pull' $PWD 'docker-compose pull'
+}
+
+check_run "docker\-compose\.yml" suggest_docker_compose_pull

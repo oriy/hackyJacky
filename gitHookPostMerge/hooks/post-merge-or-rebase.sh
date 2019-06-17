@@ -21,12 +21,6 @@ check_run() {
 	fi
 }
 
-
-# useful for npm and bower:
-check_run package.json "npm prune && npm install"
-# check_run bower.json "bower prune && bower install"
-
-
 ##
 # suggest_command()
 # conditionally execute a command when specified files change
@@ -61,14 +55,10 @@ suggest_command() {
     fi
 }
 
-suggest_liquibase_update() {
-    suggest_command 'liqui' 'db' 'gradlew update'
-}
-
-suggest_gradle_idea() {
-    suggest_command 'idea' '.' 'gradlew idea'
-}
-
-check_run "liquibase/.*\.xml" "suggest_liquibase_update"
-check_run "\.gradle" "suggest_gradle_idea"
-
+CONFIG_DIR=.git/hooks/config
+for file in $(ls ${CONFIG_DIR}); do
+  case "$file" in
+    *.config)        source "${CONFIG_DIR}/$file" ;;
+    *)        ;;
+  esac
+done

@@ -1,0 +1,5 @@
+suggest_liquibase_update() {
+    suggest_command 'liqui' 'db' 'gradlew update'
+}
+
+check_run "liquibase/.*\.xml" "suggest_liquibase_update"
